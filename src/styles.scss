@@ -1,0 +1,8 @@
+/* Main Scss File */
+
+// Import Bootstrap 
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+// Import Custom Style
+@import './scss/reset';
+@import './scss/buttons';

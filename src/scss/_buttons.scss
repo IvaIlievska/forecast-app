@@ -1,0 +1,17 @@
+// Buttons Style
+
+.btn{
+    display: inline-block;
+    padding: 10px;
+    &.btn-main{
+        background-color: #2d29b0;
+        color: white;
+    }
+    &.btn-secondary{
+        background-color: white;
+        border: 1px solid #2d29b0;
+        color: #2d29b0;
+        padding: 5px 10px;
+    }
+
+}

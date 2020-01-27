@@ -1,0 +1,80 @@
+<!-- New Html -->
+<div class="d-flex flex-wrap ">
+    <div class="d-flex flex-column search-city">
+        <h1>Different kind of <span class="color-diff">weather</span> inside of <span class="color-diff">24/7</span> hours.</h1>
+        <input placeholder="Enter city name and country code, ex. London,uk" [(ngModel)]="zip" />
+        <button class="btn btn-main" (click)="loadCurrentWeather();loadForecastWeather()">
+            See Weather
+        </button>
+    </div>
+    <div class="current-weather-wrapper">
+        <div class="current-weather d-flex flex-wrap" *ngIf="showCurrent">
+            <div class="current-weather_info d-flex flex-column">
+                <div class="current-weather_info-top">
+                    <span class="current-temp">{{weatherDetails.currentTemperature}}°C</span> |
+                    <span class="current-desc">{{weatherDetails.shortDescription}}</span>
+                </div>
+                <div class="image-wrapper">
+                    <!-- This is the way we will add custom images based on the weather description -->
+                    <!-- <img src="./assets/{{weatherDetails.shortDescription}}.png" alt=""> -->
+                    <img src="./assets/Rain.png" alt="">
+                </div>
+            </div>
+            <!-- Current weather -->
+            <div class="d-flex flex-wrap current-weather_details">
+                <div class="city-name">
+                    <span>{{weatherDetails.cityName}} {{weatherDetails.country}}</span>
+                </div>
+                <div class="current-weather-icon image-wrapper">
+                    <img src="http://openweathermap.org/img/w/{{weatherDetails.icon}}.png" alt="Site Logo" width="50"
+                        height="50">
+                    <span>{{weatherDetails.description}}</span>
+                </div>
+                <div class="other-info">
+                    <div>
+                        <span class="label">Current temperature:</span>
+                        <span>{{weatherDetails.currentTemperature}}°C</span>
+                    </div>
+                    <div>
+                        <span class="label">Max. temperature:</span>
+                        <span>{{weatherDetails.maxTemperature}}°C</span>
+                    </div>
+                    <div>
+                        <span class="label">Min. temperature:</span>
+                        <span>{{weatherDetails.minTemperature}}°C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex">
+    <!-- Forcast -->
+
+    <div class="forecast-card-wrapper d-flex flex-wrap" *ngIf="showForecast">
+        <div class="forecastCard" *ngFor="let forecastDetails of forecastData.details">
+            <div class="forecastCard-conatiner">
+                <div class="forecast-date">{{forecastDetails.date | date : 'mediumDate'}}</div>
+                <div class="d-flex flex-column">
+                    <div>
+                        <span class="forecast-desc">{{forecastDetails.shortDescription}}</span>
+                        <!-- <img src="./assets/{{forecastDetails.icon}}.png" alt=""> -->
+                        <img src="http://openweathermap.org/img/w/{{forecastDetails.icon}}.png" alt="Site Logo"
+                            width="50" height="50">
+                    </div>
+                    <div class="d-flex justify-content-between forecast-temp">
+                        <div>
+                            <span> {{forecastDetails.minTemperature}}C </span>
+                            <span class="label">Min. Temp</span>
+                        </div>
+                        <div>
+                            <span> {{forecastDetails.maxTemperature}}C </span>
+                            <span class="label">Max. Temp</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
